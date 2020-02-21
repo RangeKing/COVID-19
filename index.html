@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+
+    <!--如果是IE 就以标准渲染-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!-- 视窗——————响应式布局 -->
+    <meta name='viewport' content='width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0'>
+
+    <!--当前页面的三要素-->
+    <title>COVID-19 实时疫情</title>
+    <meta name="description" content="关键词、关键字">
+    <meta name="keywords" content="描述">
+
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
+
+    <!-- 引入CSS文件 -->
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+    <!-- 公共样式 -->
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+</head>
+
+<body>
+
+
+<div id='container' class='container'>
+    <div class="top">
+        <img src="images/hImg.png" alt="" width="100%" class="t_img">
+        <!-- <p>Range King</p>
+        <span>Range King</span>
+        <div class="logo_text">
+            <div class="content">
+                <img src="images/logo.png" alt="">
+                <div>Range King</div>
+            </div>
+        </div> -->
+    </div>
+
+    <div class="middle middle_con">
+        <div class='wrap'>
+            <div class="scroll_wrap">
+                    <div class="scroll_img">
+                        <img src="images/news.png" alt="">
+                    </div>
+                    <div class="scroll_mar">
+                        <marquee behavior="scroll" direction="left">
+                            模板来着网络，数据来源为 https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5，原作者为深圳市聚能优电科技有限公司。仅为学习讨论之用，如有侵权立刻删除。
+                        </marquee>
+                    </div>
+                    <div class="scroll_detail"></div>
+
+            </div>
+            <div class="tabs">
+                <span class="tabs_wrap">
+                    <span class="sty">疫情概览</span>
+                    <span>最新动态</span>
+                    <span>防护知识</span>
+                </span>
+            </div>
+            <div class="tabs_content">
+                <div class="tabs_list gailan">
+
+                    <!-- gl_tips -->
+                    <p class="gl_tips">截止<span id="nowtime">2020-02-02 11:52</span>全国数据统计</p>
+                    
+                    <!-- detail4 -->
+                    <div class="detail4">
+                        <div class="list4">
+                            <p class="color1">较昨日+<span class="add_num1">110</span></p>
+                            <p class="num num1 color1">0</p>
+                            <div class="text">确诊病例</div>
+                        </div>
+                        <div class="list4">
+                            <p class="color2">较昨日+<span class="add_num2">110</span></p>
+                            <p class="num num2 color2">0</p>
+                            <div class="text">疑似病例</div>
+                        </div>
+                        <div class="list4">
+                            <p class="color3">较昨日+<span class="add_num3">110</span></p>
+                            <p class="num num3 color3">0</p>
+                            <div class="text">死亡人数</div>
+                        </div>
+                        <div class="list4">
+                            <p class="color4">较昨日+<span class="add_num4">110</span></p>
+                            <p class="num num4 color4">0</p>
+                            <div class="text">治愈人数</div>
+                        </div>
+                    </div>
+
+                    <!-- analyze -->
+                    <div class="analyze">
+                        <div>
+                            <img src="images/list.png" alt="" class="list_img">
+                            <p>
+                                <span>病毒:</span>
+                                <span>新型冠状病毒 2019-nCoV</span>
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/list.png" alt="" class="list_img">
+                            <p>
+                                <span>传染源:</span>
+                                <span>野生动物，可能为中华菊头蝠</span>
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/list.png" alt="" class="list_img">
+                            <p>
+                                <span>传播途径:</span>
+                                <span>经呼吸道飞沫传播，亦可通过接触传播，存在粪-口传播可能性</span>
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/list.png" alt="" class="list_img">
+                            <p>
+                                <span>易感人群:</span>
+                                <span>人群普遍易感。老年人及有基础疾病者感染后病情较重，儿童及婴幼儿也有发病</span>
+                            </p>
+                        </div>
+                        <div>
+                            <img src="images/list.png" alt="" class="list_img">
+                            <p>
+                                <span>潜伏期:</span>
+                                <span>一般为 3～7 天，目前出现超过 14 天案例，潜伏期内存在传染性</span>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- map -->
+                    <div class="map t_common">
+                        <div class="map_tit tit_common">
+                            <!-- <span class="tit_icon"></span> -->
+                            <span class="tit_con">&nbsp;&nbsp;疫情概览</span>
+                        </div>
+                        <div class="map_con" id="map_echarts" style="width:100%;height:6.5rem;">
+                            
+
+                        </div>
+                    </div>
+
+                    <!-- 全国疫情新增确诊/新增疑似趋势图 -->
+                    <div id="echarts1" style="width:100%;height:4rem;margin-bottom:0.4rem;"></div>
+                    <!-- 全国疫情累计确诊/疑似趋势图 -->
+                    <div id="echarts2" style="width:100%;height:4rem;margin-bottom:0.4rem;"></div>
+                    <!-- 全国疫情累计死亡/治愈趋势图 -->
+                    <div id="echarts3" style="width:100%;height:4rem;"></div>
+
+                    <!-- table -->
+                    <!-- 全国表格 -->
+                    <div class="china table_t t_common">
+                        <div class="tit_common">
+                            <!-- <span class="tit_icon"></span> -->
+                            <span class="tit_con">&nbsp;&nbsp;全国数据统计</span>
+                        </div>
+                    </div>
+                    <div class="china table_pro">
+                        <div class="title">
+                            <span class="t_area">地区</span>
+                            <span class="t_confirm">确诊</span>
+                            <span class="t_dead">死亡</span>
+                            <span class="t_heal">治愈</span>
+                        </div>
+                        <ul class="content">
+                        </ul>
+                    </div>
+
+                    <!-- 全球表格 -->
+                    <div class="world table_t t_common">
+                        <div class="tit_common">
+                            <!-- <span class="tit_icon"></span> -->
+                            <span class="tit_con">&nbsp;&nbsp;海外数据统计</span>
+                        </div>
+                    </div>
+                    <div class="world table_pro">
+                        <div class="title">
+                            <span class="t_area">地区</span>
+                            <span class="t_confirm">确诊</span>
+                            <span class="t_dead">死亡</span>
+                            <span class="t_heal">治愈</span>
+                        </div>
+                        <ul class="content">
+                            <!-- <li class="c_line">
+                                <div class="line_first">
+                                    <span class="c_area" style="text-align:center;">全球</span>
+                                    <span class="c_confirm">20623</span>
+                                    <span class="c_dead">427</span>
+                                    <span class="c_heal">657</span>
+                                </div>
+                            </li> -->
+
+                        </ul>
+                    </div>
+                    
+
+                    
+                </div>
+                <div class="tabs_list dongtai">
+                    <div class="main">
+                        <ul class="cbp_tmtimeline">
+                            <!-- 这里是最新动态 -->
+                        </ul>
+                    </div>
+                </div>
+                <div class="tabs_list fhzs">
+                    <div class="china table_t t_common">
+                        <div class="tit_common">
+                            <!-- <span class="tit_icon"></span> -->
+                            <span class="tit_con">&nbsp;&nbsp;患者特征与防护</span>
+                        </div>
+                    </div>
+                    <!-- <div class="tit tit1 tit_common">患者特征与防护</div> -->
+                    <div class="fhhz">
+                        <span>患者特征汇总</span>
+                        <img src="images/fhhz.png" alt="" width="100%">
+                    </div>
+                    <div class="fhbl">
+                        <span>性别比例</span>
+                        <img src="images/fhbl.png" alt="" width="100%">
+                    </div>
+                    <div class="fhnl">
+                        <span>年龄分布</span>
+                        <p>
+                            <b>中位数48岁</b>，范围9个月~96岁，15岁以下年龄组病例不到0.6%。
+                        </p>
+                    </div>
+
+                    <div class="china table_t t_common">
+                        <div class="tit_common">
+                            <!-- <span class="tit_icon"></span> -->
+                            <span class="tit_con">&nbsp;&nbsp;节后返岗如是说</span>
+                        </div>
+                    </div>
+                    <!-- <div class="tit tit tit_common">节后返岗如是说</div> -->
+                    <div class="fhfg">
+                        <img src="images/fhfg.jpg" alt="" width="100%">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- container结束 -->
+
+<!-- 引入响应式布局的rem根标签 -->
+<script>
+    (function(win,doc){
+        var docEl = doc.documentElement || document.body;//获取HTML标签
+        var container = doc.getElementById('container');//container元素
+        //判断是移动端设备还是PC,移动 就采用'orientationchange',横竖屏事件，PC端就采用onresize，窗口改变时间
+        var resize = 'onorientationchange' in win ? 'orientationchange':'resize';
+        function rem(){
+            docEl.style.fontSize= 100*(container.clientWidth/750)+'px';
+        }
+
+        //监听'DOMContent事件:DOM加载完成执行,如果DOMContent事件，那么执行rem函数
+        doc.addEventListener('DOMContentLoaded',rem,false);
+
+        //win下监听resize事件,如果resize事件，那么执行rem函数
+        win.addEventListener(resize,rem,false);
+    })(window,document);
+</script>
+<script type='text/javascript' src='js/jquery-3.2.1.js'></script>
+<script type='text/javascript' src='js/echarts.js'></script>
+<script type='text/javascript' src='js/china.js'></script>
+<script type='text/javascript' src='js/index.js'></script>
+</body>
+</html>
